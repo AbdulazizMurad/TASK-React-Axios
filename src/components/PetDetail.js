@@ -1,9 +1,17 @@
 import React from "react";
 import petsData from "../petsData";
+import { getPetById } from "../API/pets";
+import { useState } from "react";
 const PetDetail = () => {
-  const pet = petsData[0];
+  const [petId, setpetId] = useState([]);
+  const getPetId = async () => {
+    const response = await getPetById(147);
+    setpetId(response);
+  };
+  const pet = petId;
   return (
     <div className="bg-[#F9E3BE] w-screen h-[100vh] flex justify-center items-center">
+      <button onClick={getPetId}> get By Id</button>
       <div className="border border-black rounded-md w-[70%] h-[70%] overflow-hidden flex flex-col md:flex-row p-5">
         <div className="h-full w-full md:w-[35%]">
           <img
