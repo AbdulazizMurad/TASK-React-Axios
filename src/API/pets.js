@@ -12,7 +12,7 @@ const addNewPet = async (name, type, image, available) => {
     name: name,
     type: type,
     image: image,
-    adopted: available, //available is named adopted
+    adopted: available, //available is named adopted, all on left is on backEnd.
   });
   return response.data;
 };

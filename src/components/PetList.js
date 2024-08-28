@@ -11,9 +11,10 @@ const PetList = () => {
   //   const response = await getAllPets();
   //   setpets(response);
   // };
+
   const { data: pets } = useQuery({
     queryKey: ["getallpets"],
-    queryFn: getAllPets,
+    queryFn: () => getAllPets(),
   });
 
   const [query, setQuery] = useState("");
@@ -21,7 +22,7 @@ const PetList = () => {
 
   const petList = pets
     ?.filter((pet) => pet.name.toLowerCase().includes(query.toLowerCase()))
-    .map((pet) => <PetItem pet={pet} key={pet.id} />);
+    .map((pet) => <PetItem pet={pet} key={pet.id} />); // filter from server, which means needs "?" to wait.
   return (
     <>
       <Navbar />
