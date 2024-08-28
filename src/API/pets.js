@@ -1,13 +1,22 @@
 import instance from ".";
 const getAllPets = async () => {
-  const response = await instance.get("/pets");
+  const response = await instance.get("/pets/");
   return response.data;
 };
 const getPetById = async (id) => {
-  const response = await instance.get(`pets/${id}`);
+  const response = await instance.get(`/pets/${id}`);
   return response.data;
 };
-// const addNewPet = ()=>{
-//     const response = instance.post(`https://pets-react-query-backend.eapi.joincoded.com/pets/${name}/${image}`)
-// }
-export { getAllPets, getPetById };
+const addNewPet = async (name, type, image, available) => {
+  const response = await instance.post("/pets/", {
+    name: name,
+    type: type,
+    image: image,
+    adopted: available, //available is named adopted
+  });
+  return response.data;
+};
+export { getAllPets, getPetById, addNewPet };
+// const [name, setName] = useState("");
+//   const [type, setType] = useState("");
+//   const [image, setImage] = useState("");

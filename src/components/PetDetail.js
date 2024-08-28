@@ -2,12 +2,15 @@ import React from "react";
 import petsData from "../petsData";
 import { getPetById } from "../API/pets";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 const PetDetail = () => {
   const [petId, setpetId] = useState([]);
+  const { id } = useParams();
   const getPetId = async () => {
-    const response = await getPetById(147);
+    const response = await getPetById(id); //getting the id from useparam
     setpetId(response);
   };
+
   const pet = petId;
   return (
     <div className="bg-[#F9E3BE] w-screen h-[100vh] flex justify-center items-center">
